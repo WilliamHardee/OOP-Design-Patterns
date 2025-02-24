@@ -4,6 +4,9 @@
 package org.example;
 
 import org.example.Singleton;
+import org.example.ObserverPattern.CellUser;
+import org.example.ObserverPattern.EmailUser;
+import org.example.ObserverPattern.NotificationService;
 import org.example.ComputerBuilder;
 import org.example.StrategyPattern.*;
 
@@ -43,6 +46,25 @@ public class App {
         sortService.setStrategy(new SortDesc());
         sortService.sort();
         System.out.println(sortService);
+
+        NotificationService notificationService = new NotificationService();
+        EmailUser email1 = new EmailUser("abc@gmail.com");
+        CellUser cellUser1 = new CellUser(123456789);
+
+        System.out.println("Email user before " + email1.inStock_);
+
+        notificationService.subscribe(email1);
+        notificationService.subscribe(cellUser1);
+        notificationService.sendAlert();
+
+        System.out.println("Email user after "  + email1.inStock_);
+
+        notificationService.unsubscribe(cellUser1);
+        notificationService.sendAlert();
+
+        
+
+
 
 
 
