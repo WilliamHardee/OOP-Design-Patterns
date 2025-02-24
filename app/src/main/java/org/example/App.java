@@ -5,6 +5,7 @@ package org.example;
 
 import org.example.Singleton;
 import org.example.ComputerBuilder;
+import org.example.StrategyPattern.*;
 
 public class App {
     public String getGreeting() {
@@ -34,6 +35,14 @@ public class App {
                                     .build();
         
         System.out.println(computer);
+
+        SortService sortService = new SortService(new int[]{1, 4, 3, 9, 7, 8, 4, 3});
+
+        sortService.sort(new SortAsc());
+        System.out.println(sortService);
+        sortService.setStrategy(new SortDesc());
+        sortService.sort();
+        System.out.println(sortService);
 
 
 
