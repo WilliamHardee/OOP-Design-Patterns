@@ -4,9 +4,14 @@
 package org.example;
 
 import org.example.Singleton;
+import org.example.IteratorPattern.BinaryNode;
+import org.example.IteratorPattern.BinaryTree;
 import org.example.ObserverPattern.CellUser;
 import org.example.ObserverPattern.EmailUser;
 import org.example.ObserverPattern.NotificationService;
+
+import java.util.Iterator;
+
 import org.example.ComputerBuilder;
 import org.example.StrategyPattern.*;
 
@@ -61,6 +66,36 @@ public class App {
 
         notificationService.unsubscribe(cellUser1);
         notificationService.sendAlert();
+
+
+        BinaryNode root = new BinaryNode(1);
+        BinaryNode node2 = new BinaryNode(2);
+        BinaryNode node3 = new BinaryNode(3);
+        BinaryNode node4 = new BinaryNode(4);
+        BinaryNode node5 = new BinaryNode(5);
+
+        // Build the tree structure:
+        //        1
+        //       / \
+        //      2   3
+        //     / \
+        //    4   5
+
+        root.setLeft(node2);
+        root.setRight(node3);
+        node2.setLeft(node4);
+        node2.setRight(node5);
+
+        BinaryTree binaryTree = new BinaryTree(root);
+
+        Iterator<BinaryNode> iterator = binaryTree.createPostOrderIterator();
+
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next().getValue());
+        }
+
+
+
 
         
 
