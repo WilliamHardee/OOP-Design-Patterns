@@ -4,6 +4,7 @@
 package org.example;
 
 import org.example.Singleton;
+import org.example.ComputerBuilder;
 
 public class App {
     public String getGreeting() {
@@ -22,6 +23,19 @@ public class App {
         Singleton singleton_2 = Singleton.get_instance();
 
         System.out.println("Are they aliases: " + (singleton == singleton_2));
+
+        System.out.println("Computer using builder pattern\n");
+
+        ComputerBuilder computer = new ComputerBuilder.Builder()
+                                    .cpu("Intel")
+                                    .gpu("5090")
+                                    .ram("32GB")
+                                    .storage("2TB")
+                                    .build();
+        
+        System.out.println(computer);
+
+
 
 
         
