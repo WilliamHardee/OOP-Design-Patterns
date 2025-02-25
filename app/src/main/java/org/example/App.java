@@ -4,6 +4,10 @@
 package org.example;
 
 import org.example.Singleton;
+import org.example.DecoratorPattern.BaconDecorator;
+import org.example.DecoratorPattern.Burger;
+import org.example.DecoratorPattern.CheeseDecorator;
+import org.example.DecoratorPattern.PlainBurger;
 import org.example.IteratorPattern.BinaryNode;
 import org.example.IteratorPattern.BinaryTree;
 import org.example.ObserverPattern.CellUser;
@@ -93,6 +97,15 @@ public class App {
         while(iterator.hasNext()) {
             System.out.println(iterator.next().getValue());
         }
+
+        Burger plainBurger = new PlainBurger();
+        System.out.println("Desc: " + plainBurger.print() + "\nCost: " + plainBurger.cost());
+
+        Burger cheeseBurger = new CheeseDecorator(new PlainBurger());
+        System.out.println("Desc: " + cheeseBurger.print() + "\nCost: " + cheeseBurger.cost());
+
+        Burger baconBurger = new BaconDecorator(new CheeseDecorator(new PlainBurger()));
+        System.out.println("Desc: " + baconBurger.print() + "\nCost: " + baconBurger.cost());
 
 
 
